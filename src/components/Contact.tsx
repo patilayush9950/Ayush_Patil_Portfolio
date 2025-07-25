@@ -141,7 +141,7 @@ const Contact = () => {
                 </CardHeader>
                 <CardContent>
                   {/* --- IMPORTANT CHANGES START HERE --- */}
-                  <form className="space-y-6" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                  <form className="space-y-6" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/contact-form-submission">
                     {/* Hidden input for Netlify Forms (required) */}
                     <input type="hidden" name="form-name" value="contact" />
                     {/* Hidden Honeypot field for spam protection (optional but recommended) */}
