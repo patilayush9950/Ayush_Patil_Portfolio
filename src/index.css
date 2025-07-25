@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Professional Portfolio Design System */
+@layer base {
+  :root {
+    /* Primary Brand Colors */
+    --background: 0 0% 98%;
+    --foreground: 222 15% 15%;
+    
+    /* Professional Blue Accent */
+    --primary: 220 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 220 91% 70%;
+    --primary-dark: 220 91% 50%;
+    
+    /* Card and Surface Colors */
+    --card: 0 0% 100%;
+    --card-foreground: 222 15% 15%;
+    --card-border: 220 13% 91%;
+    
+    /* Secondary Colors */
+    --secondary: 210 17% 95%;
+    --secondary-foreground: 222 15% 25%;
+    
+    /* Muted Colors */
+    --muted: 210 17% 95%;
+    --muted-foreground: 215 16% 47%;
+    
+    /* Accent Colors */
+    --accent: 220 91% 60%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Semantic Colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    /* Border and Input */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 220 91% 60%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(220 91% 60%), hsl(240 91% 70%));
+    --gradient-secondary: linear-gradient(135deg, hsl(210 17% 95%), hsl(220 13% 91%));
+    --gradient-hero: linear-gradient(135deg, hsl(220 91% 60% / 0.1), hsl(240 91% 70% / 0.05));
+    
+    /* Shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(220 91% 60% / 0.2);
+    --shadow-card: 0 4px 20px -4px hsl(220 91% 60% / 0.1);
+    --shadow-glow: 0 0 40px hsl(220 91% 60% / 0.3);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    --radius: 0.75rem;
+  }
+  
+  .dark {
+    --background: 222 15% 8%;
+    --foreground: 210 17% 95%;
+    
+    --primary: 220 91% 65%;
+    --primary-foreground: 222 15% 8%;
+    --primary-light: 220 91% 75%;
+    --primary-dark: 220 91% 55%;
+    
+    --card: 222 15% 12%;
+    --card-foreground: 210 17% 95%;
+    --card-border: 220 13% 20%;
+    
+    --secondary: 222 15% 15%;
+    --secondary-foreground: 210 17% 85%;
+    
+    --muted: 222 15% 15%;
+    --muted-foreground: 215 16% 60%;
+    
+    --accent: 220 91% 65%;
+    --accent-foreground: 222 15% 8%;
+    
+    --border: 220 13% 20%;
+    --input: 220 13% 20%;
+    --ring: 220 91% 65%;
+    
+    --gradient-hero: linear-gradient(135deg, hsl(220 91% 65% / 0.15), hsl(240 91% 75% / 0.1));
+    --shadow-elegant: 0 10px 30px -10px hsl(220 91% 65% / 0.3);
+    --shadow-card: 0 4px 20px -4px hsl(220 91% 65% / 0.2);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-inter antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent;
+  }
+  
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .card-elegant {
+    @apply bg-card border border-card-border rounded-xl shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-elegant)] hover:-translate-y-1;
+  }
+  
+  .section-padding {
+    @apply py-20 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
