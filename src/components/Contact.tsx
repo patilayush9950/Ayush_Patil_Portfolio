@@ -9,10 +9,7 @@ import { Mail, Phone, Github, MapPin, Send, FileText, ExternalLink } from 'lucid
 
 const Contact = () => {
   const myEmail = 'patilayush9950@gmail.com';
-
-  // Path to your resume PDF. Make sure this file is in your /public folder!
-  // Example: if your PDF is `public/Ayush_Patil_Resume.pdf`, use '/Ayush_Patil_Resume.pdf'
-  const resumePdfPath = '/Ayush_Patil_Resume.pdf'; // <--- IMPORTANT: Update this path & FILENAME!
+  const resumePdfPath = '/Ayush_Patil_Resume.pdf'; // Make sure this file is in your /public folder!
 
   const contactInfo = [
     {
@@ -50,7 +47,6 @@ const Contact = () => {
     { name: "Email", url: `mailto:${myEmail}`, icon: Mail },
     { name: "Phone", url: "tel:+918208156093", icon: Phone }
   ];
-
 
   return (
     <section id="contact" className="section-padding">
@@ -134,7 +130,7 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Contact Form - "Send a Message" (UNTOUCHED from original, will not send emails) */}
+            {/* Contact Form - "Send a Message" (Netlify Forms Enabled) */}
             <div className="animate-fade-in-right">
               <Card className="card-elegant">
                 <CardHeader>
@@ -144,59 +140,76 @@ const Contact = () => {
                   </p>
                 </CardHeader>
                 <CardContent>
-                  <form className="space-y-6">
+                  {/* --- IMPORTANT CHANGES START HERE --- */}
+                  <form className="space-y-6" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    {/* Hidden input for Netlify Forms (required) */}
+                    <input type="hidden" name="form-name" value="contact" />
+                    {/* Hidden Honeypot field for spam protection (optional but recommended) */}
+                    <p className="hidden">
+                      <label>
+                        Don’t fill this out if you’re human: <input name="bot-field" />
+                      </label>
+                    </p>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="firstName">First Name</Label>
-                        <Input id="firstName" placeholder="John" />
+                        {/* Add 'name' attribute */}
+                        <Input id="firstName" name="firstName" placeholder="John" />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="lastName">Last Name</Label>
-                        <Input id="lastName" placeholder="Doe" />
+                        {/* Add 'name' attribute */}
+                        <Input id="lastName" name="lastName" placeholder="Doe" />
                       </div>
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="email">Email</Label>
-                      <Input id="email" type="email" placeholder="john.doe@example.com" />
+                      {/* Add 'name' attribute */}
+                      <Input id="email" name="email" type="email" placeholder="john.doe@example.com" />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="subject">Subject</Label>
-                      <Input id="subject" placeholder="Project Collaboration" />
+                      {/* Add 'name' attribute */}
+                      <Input id="subject" name="subject" placeholder="Project Collaboration" />
                     </div>
 
                     <div className="space-y-2">
                       <Label htmlFor="message">Message</Label>
+                      {/* Add 'name' attribute */}
                       <Textarea
                         id="message"
+                        name="message"
                         placeholder="Tell me about your project or how I can help..."
                         rows={6}
                       />
                     </div>
 
-                    <Button className="w-full group" size="lg">
+                    {/* Change Button type to "submit" */}
+                    <Button type="submit" className="w-full group" size="lg">
                       <Send size={20} className="mr-2 group-hover:translate-x-1 transition-transform" />
                       Send Message
                     </Button>
                   </form>
+                  {/* --- IMPORTANT CHANGES END HERE --- */}
                 </CardContent>
               </Card>
             </div>
           </div>
 
-          {/* Call to Action - Buttons (FIXED) */}
+          {/* Call to Action - Buttons */}
           <div className="text-center mt-16 animate-fade-in">
             <div className="p-8 bg-gradient-to-r from-primary/10 to-primary-light/10 rounded-2xl">
               <h3 className="text-2xl font-bold mb-4">Ready to Work Together?</h3>
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
                 I'm always excited to work on challenging projects and collaborate with
-                 passionate teams. Let's build something amazing together!
+                passionate teams. Let's build something amazing together!
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 {/* Get In Touch Button - Redirects to Email */}
                 <Button size="lg" className="group" asChild>
-                  {/* <--- CORRECTED: The Mail icon and text are NOW INSIDE the <a> tag */}
                   <a href={`mailto:${myEmail}`} target="_self" className="flex items-center">
                     <Mail size={20} className="mr-2 group-hover:animate-bounce" />
                     Get In Touch
@@ -204,7 +217,6 @@ const Contact = () => {
                 </Button>
                 {/* Download Resume Button - Downloads PDF */}
                 <Button variant="outline" size="lg" className="group" asChild>
-                  {/* <--- CORRECTED: The FileText icon and text are NOW INSIDE the <a> tag */}
                   <a href={resumePdfPath} download="Ayush_Patil_Resume.pdf" className="flex items-center">
                     <FileText size={20} className="mr-2 group-hover:rotate-12 transition-transform" />
                     Download Resume
