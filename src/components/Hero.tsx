@@ -3,6 +3,7 @@ import { Badge } from '@/components/ui/badge';
 import { Github, Mail, Phone, FileText, ExternalLink } from 'lucide-react';
 
 const Hero = () => {
+  const resumePdfPath = '/Ayush_Patil_Resume.pdf'; // Path to your resume PDF
   const contactLinks = [
     {
       icon: Mail,
@@ -24,9 +25,9 @@ const Hero = () => {
     },
     {
       icon: FileText,
-      label: 'Naukri Profile',
+      label: 'Linkedin Profile',
       value: 'View Profile',
-      href: '#'
+      href: 'https://www.linkedin.com/in/ayush-patil81/'
     }
   ];
 
@@ -77,13 +78,25 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="group shadow-lg hover:shadow-xl transition-all duration-300">
-              <Mail size={20} className="mr-2 group-hover:animate-bounce" />
-              Get In Touch
+            {/* Get In Touch Button - Redirects to mail */}
+            <Button asChild size="lg" className="group shadow-lg hover:shadow-xl transition-all duration-300">
+              <a href="mailto:patilayush9950@gmail.com" className="flex items-center">
+                <Mail size={20} className="mr-2 group-hover:animate-bounce" />
+                Get In Touch
+              </a>
             </Button>
-            <Button variant="outline" size="lg" className="group">
-              <FileText size={20} className="mr-2 group-hover:rotate-12 transition-transform" />
-              View Resume
+
+            {/* View Resume Button - Opens PDF in new tab */}
+            <Button asChild variant="outline" size="lg" className="group">
+              <a 
+                href={resumePdfPath} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center"
+              >
+                <FileText size={20} className="mr-2 group-hover:rotate-12 transition-transform" />
+                View Resume
+              </a>
             </Button>
           </div>
 
