@@ -35,9 +35,9 @@ const Contact = () => {
     },
     {
       icon: FileText,
-      label: "Naukri Profile",
+      label: "Linkedin",
       value: "View Professional Profile",
-      href: "#",
+      href: "https://www.linkedin.com/in/ayush-patil81/",
       description: "Complete professional details"
     }
   ];

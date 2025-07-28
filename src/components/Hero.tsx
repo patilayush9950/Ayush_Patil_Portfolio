@@ -25,7 +25,7 @@ const Hero = () => {
     },
     {
       icon: FileText,
-      label: 'Linkedin Profile',
+      label: 'Linkedin ',
       value: 'View Profile',
       href: 'https://www.linkedin.com/in/ayush-patil81/'
     }
